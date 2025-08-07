@@ -1,0 +1,5 @@
+#!/bin/bash
+# 安装完成后自动启动服务
+launchctl load /Library/LaunchDaemons/com.imagetexcel.backend.plist
+# 执行健康检查
+curl -s http://localhost:8081/healthcheck | grep 'OK' || exit 1

@@ -1,0 +1,12 @@
+#!/bin/bash
+# 验证系统版本
+oj=$(sw_vers -productVersion | cut -d. -f2)
+if [ $oj -lt 15 ]; then
+    echo "需要macOS 10.15或更高版本"
+    exit 1
+fi
+# 检查依赖项
+if ! command -v node &> /dev/null; then
+    echo "正在安装Node.js..."
+    brew install node
+fi
